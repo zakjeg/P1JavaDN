@@ -24,27 +24,27 @@ public class DN02_63250113{
 			case 4: 
 				System.out.println(spiralnica(d,arr));
 				break;
-
 		}
-
 	}
 
 	public static int ravnovrstnica(int d, int[] arr){
+		
 		int sum=0;
+
 		for(int i=0; i<arr.length-1; i++){
 			sum+=Math.abs(arr[i+1]-arr[i]);
 		}
+
 		return sum;
 	}
 
-
         public static int kvadratnica(int d, int[] arr){
+
 		int sum=0; 
+
 		for(int i=0; i<arr.length-1; i++){
 			int low=arr[i]; int high=arr[i+1];
 			if(low>high){int temp = low; low = high; high = temp;}
-
-			//System.out.println((high/d)+" "+(low/d)+" "+(high%d)+" "+(low%d)+ " => " +(((high/d)-(low/d))+((high%d)-(low%d))) );
 
 			sum+=Math.abs(((high/d)-(low/d)))+Math.abs(((high%d)-(low%d)));
 		}
@@ -53,25 +53,30 @@ public class DN02_63250113{
         }
 
         public static int piramidnica(int d, int[] arr){
-		int sum=0; 
+	
+		int sum=0;
+
 		//Kodrinatni sistem kjer je ničla x osi v sredini piramide (jo "prepeže na pol"). Premik v Y pa je razlika med stoplci.
 		int y1=-1;int x1=-1;
 		int y2=-1;int x2=-1;
+
 		for(int i=0; i<arr.length-1; i++){
 			y1=(int)Math.floor(Math.sqrt(arr[i]));
 			y2=(int)Math.floor(Math.sqrt(arr[i+1]));
 			x1=arr[i]-((y1+1)*(y1+1)-1-y1);
 			x2=arr[i+1]-((y2+1)*(y2+1)-1-y2);
-			//System.out.println("y1="+y1+"x1="+x1+"y2="+y2+"x2="+x2);
 			sum+=(Math.abs(x2-x1)+Math.abs(y2-y1));
 		}
 		return sum;
         }
 
 	public static int spiralnica(int d, int[] arr){
+
+		//a-"kolobar" prve številke, b-druge
 		int a = 0;
 		int b = 0;
 		int sum=0;
+
 		//kordinatni sistem z srediscem v 0 (sredini).
 		int y1=-1;int x1=-1;
 		int y2=-1;int x2=-1;
@@ -90,37 +95,26 @@ public class DN02_63250113{
 			int premik1= -((int) Math.pow(((a==0)?0:((2*a)-1)),2) - arr[i]);
 			int premik2= -((int) Math.pow(((b==0)?0:((2*b)-1)),2) - arr[i+1]);
 
-			//System.out.println(arr[i]+"=>"+a+" "+premik1+", "+arr[i+1]+"=>"+b+" "+premik2);
-			
-
 			//PREMIK "NAPREJ" PO IZBRANEM KOLOBARJU REDA A/B
 			int[] arr1=premik(a, premik1);
 			int[] arr2=premik(b, premik2);
 
-			//System.out.println("arr1 = " + arr1[0] + " " + arr1[1]);
-			//System.out.println("arr2 = " + arr2[0] + " " + arr2[1]);
-			
 			//VNOS PREMIKOV KI SO PODANI V ARR-J
 			x1+=arr1[0];y1+=arr1[1];
 			x2+=arr2[0];y2+=arr2[1];
 
-			//System.out.println("x1="+x1+" y1="+y1+" x2="+x2+" y2="+y2);
-
-			int curr =(Math.abs(y2-y1)+Math.abs(x2-x1));
-			sum+=curr;
-			//System.out.println("trenutni premik => "+curr);
-
-			//System.out.println();
-
+			sum+=(Math.abs(y2-y1)+Math.abs(x2-x1));
 		}
-		return sum;
 
+		return sum;
 	}
 
 	public static int[] premik(int a, int premik){
+		
 		int x=0;
 		int y=0;
 		int[] arr = new int[2];
+
 		switch((int) Math.floor(((premik-1)/(2*a)))){
 			case 0: x+=premik;
 				break;
@@ -135,7 +129,6 @@ public class DN02_63250113{
 		arr[0]=x;arr[1]=y;
 		return arr;
 	}
-
 
 }
 
