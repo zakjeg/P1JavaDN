@@ -7,7 +7,10 @@ public class DN04_63250113{
 
 		for(int i=0; i<arr.length; i++)arr[i]=sc.nextInt();
 
-		slowSolution(arr,lucky);
+		//slowSolution(arr,lucky);
+		
+		sejk(arr,lucky);
+
 		
 	}
 
@@ -20,5 +23,28 @@ public class DN04_63250113{
 
 		System.out.println(sum);
 	
+	}
+
+	public static void sejk(int[] arr, int lucky){
+	
+		HashMap<Integer, Long> map = new HashMap<Integer, Long>();
+		long sum=0; 
+		long curr=0;
+		for(int i=0;i<arr.length;i++){
+			curr=0;
+			if(map.containsKey(arr[i])){
+			sum+=map.get(arr[i]);
+			}
+			else{
+			for(int j=0; j<arr.length; j++)
+				if((arr[i]+arr[j])==lucky)curr++;
+
+				map.put(arr[i], curr);
+			}
+
+			sum+=curr;
+		}
+
+		System.out.println(sum);
 	}
 }
