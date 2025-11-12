@@ -33,7 +33,7 @@ public class DN04_63250113{
 		for(int i=0;i<arr.length;i++){
 			curr=0;
 			if(map.containsKey(arr[i])){
-			sum+=map.get(arr[i]);
+				sum+=map.get(arr[i]);
 			}
 			else{
 			for(int j=0; j<arr.length; j++)
