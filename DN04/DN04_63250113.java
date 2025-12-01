@@ -7,9 +7,9 @@ public class DN04_63250113{
 
 		for(int i=0; i<arr.length; i++)arr[i]=sc.nextInt();
 
-		//slowSolution(arr,lucky);
+		slowSolution(arr,lucky);
 		
-		sejk(arr,lucky);
+		//sejk(arr,lucky);
 
 		
 	}
